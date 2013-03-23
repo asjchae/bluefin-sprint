@@ -80,17 +80,7 @@ app.get('/', loginRequired, function (req, res) {
   });
 });
 
-app.post('/status', loginRequired, function (req, res) {
-  req.api('statuses/update').post({
-    status: req.body.status
-  }, function (err, json) {
-    if (err) {
-      res.json({error: err});
-    } else {
-      res.redirect('http://twitter.com/' + json.user.screen_name + '/status/' + json.id_str);
-    }
-  });
-})
+app.post('/status', loginRequired,status)
 
 app.listen(app.get('port'), function () {
   console.log('Listening on http://' + app.get('host'))
@@ -102,13 +92,4 @@ app.listen(app.get('port'), function () {
 
 var carrier = require('carrier');
 
-app.get('/stream', loginRequired, function (req, res) {
-  req.api.stream('statuses/filter').post({
-    track: ['school', 'bored']
-  }, function (err, stream) {
-    carrier.carry(stream, function (line) {
-      var line = JSON.parse(line);
-      res.write(line.text + '\n');
-    });
-  });
-})
+app.get('/stream', loginRequired,stream)
