@@ -1,7 +1,8 @@
 // npm install express rem
 var rem = require('rem')
   , express = require('express')
-  , path = require('path');
+  , path = require('path')
+  , rss = require('./routes/rss');
 
 /**
  * Express.
@@ -44,6 +45,8 @@ var twitter = rem.connect('twitter.com').configure({
 
 
 var oauth = rem.oauth(twitter, 'http://' + app.get('host') + '/oauth/callback');
+
+app.get('/rss', rss.get);
 
 app.get('/login/', oauth.login());
 
