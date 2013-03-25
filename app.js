@@ -1,12 +1,8 @@
-// npm install express rem
 var rem = require('rem')
   , express = require('express')
   , path = require('path')
-  , rss = require('./routes/rss');
-
-/**
- * Express.
- */
+  , rss = require('./routes/rss')
+  , carrier = require('carrier');
 
 var app = express();
 
@@ -63,37 +59,31 @@ app.all('/*', function (req, res, next) {
   next();
 });
 
-/**
- * Routes
- */
-
-
-app.get('/rss', rss.get);
-
-// function loginRequired (req, res, next) {
-//   if (!req.api) {
-//     res.redirect('/login/');
-//   } else {
-//     next();
-//   }
-// }
-
-// app.get('/', loginRequired, function (req, res) {
-//   req.api('account/verify_credentials').get(function (err, profile) {
-//     res.send('Hi ' + profile.screen_name + '! <form action="/status" method="post"><input name="status"><button>Post Status</button></form>');
-//   });
-// });
-
-// app.post('/status', loginRequired, status)
-
+// Start the app.
 app.listen(app.get('port'), function () {
   console.log('Listening on http://' + app.get('host'))
 });
 
-/**
- * Streaming example
- */
 
-// var carrier = require('carrier');
+// ROUTES.
+app.get('/rss', rss.get);
 
-// app.get('/stream', loginRequired,stream)
+
+// TWITTER STUFF THAT BROKE.
+function loginRequired (req, res, next) {
+ if (!req.api) {
+    res.redirect('/login/');
+  } else {
+    next();
+  }
+}
+
+app.get('/', loginRequired, function (req, res) {
+  req.api('account/verify_credentials').get(function (err, profile) {
+    res.send('Hi ' + profile.screen_name + '! <form action="/status" method="post"><input name="status"><button>Post Status</button></form>');
+  });
+});
+
+app.post('/status', loginRequired, status)
+
+app.get('/stream', loginRequired, stream)
