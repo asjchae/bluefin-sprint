@@ -2,6 +2,7 @@ var rem = require('rem')
   , express = require('express')
   , path = require('path')
   , rss = require('./routes/rss')
+  , routes =require('./routes')
   , carrier = require('carrier');
 
 var app = express();
@@ -69,7 +70,6 @@ app.listen(app.get('port'), function () {
 app.get('/rss', rss.get);
 
 
-// TWITTER STUFF THAT BROKE.
 function loginRequired (req, res, next) {
  if (!req.api) {
     res.redirect('/login/');
@@ -84,6 +84,6 @@ app.get('/', loginRequired, function (req, res) {
   });
 });
 
-app.post('/status', loginRequired, status)
+app.post('/status', loginRequired, routes.status)
 
-app.get('/stream', loginRequired, stream)
+app.get('/stream', loginRequired, routes.stream)
