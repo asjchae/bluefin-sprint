@@ -46,8 +46,6 @@ var twitter = rem.connect('twitter.com').configure({
 
 var oauth = rem.oauth(twitter, 'http://' + app.get('host') + '/oauth/callback');
 
-app.get('/rss', rss.get);
-
 app.get('/login/', oauth.login());
 
 app.use(oauth.middleware(function (req, res, next) {
@@ -69,21 +67,24 @@ app.all('/*', function (req, res, next) {
  * Routes
  */
 
-function loginRequired (req, res, next) {
-  if (!req.api) {
-    res.redirect('/login/');
-  } else {
-    next();
-  }
-}
 
-app.get('/', loginRequired, function (req, res) {
-  req.api('account/verify_credentials').get(function (err, profile) {
-    res.send('Hi ' + profile.screen_name + '! <form action="/status" method="post"><input name="status"><button>Post Status</button></form>');
-  });
-});
+app.get('/rss', rss.get);
 
-app.post('/status', loginRequired,status)
+// function loginRequired (req, res, next) {
+//   if (!req.api) {
+//     res.redirect('/login/');
+//   } else {
+//     next();
+//   }
+// }
+
+// app.get('/', loginRequired, function (req, res) {
+//   req.api('account/verify_credentials').get(function (err, profile) {
+//     res.send('Hi ' + profile.screen_name + '! <form action="/status" method="post"><input name="status"><button>Post Status</button></form>');
+//   });
+// });
+
+// app.post('/status', loginRequired, status)
 
 app.listen(app.get('port'), function () {
   console.log('Listening on http://' + app.get('host'))
@@ -93,6 +94,6 @@ app.listen(app.get('port'), function () {
  * Streaming example
  */
 
-var carrier = require('carrier');
+// var carrier = require('carrier');
 
-app.get('/stream', loginRequired,stream)
+// app.get('/stream', loginRequired,stream)
