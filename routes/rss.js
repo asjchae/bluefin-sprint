@@ -32,7 +32,7 @@ exports.get = function(req, res) {
 	// });
 
 // ATTEMPT TWO.
-
+	
 	request('http://www.techmeme.com/feed.xml')
 		.pipe(new feedparser())
 		
@@ -46,6 +46,7 @@ exports.get = function(req, res) {
 
 		.on('article', function(article) {
 			console.log('Got article: %s', article.title || article.description);
+			res.send(article.summary);
 		})
 
 		.on('end', function() {
