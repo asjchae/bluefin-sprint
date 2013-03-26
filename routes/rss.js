@@ -15,7 +15,7 @@ exports.get = function(req, res) {
 
 	// feedparser.parseUrl(req)
 	//   .on('response', function (response) {
-	//     console.log(response.channel); //.statusCode
+	//     console.log(response); //.statusCode
 	//   });
 
 	// feedparser.parseStream(new stream.read(feed), function (err, meta, articles) {
@@ -33,20 +33,20 @@ exports.get = function(req, res) {
 
 // ATTEMPT TWO.
 
-	request('http://www.techmeme.com/index.xml')
-		.pipe(new feedparser(normalize = false, addmeta = false));
+	request('http://www.techmeme.com/feed.xml')
+		.pipe(new feedparser())
 		
 		.on('error', function (error) {
 			console.error(error);
-		});
+		})
 
 		.on('meta', function (meta) {
 			console.log('=================', meta.title);
-		});
+		})
 
 		.on('article', function(article) {
 			console.log('Got article: %s', article.title || article.description);
-		});
+		})
 
 		.on('end', function() {
 			console.log('End');
