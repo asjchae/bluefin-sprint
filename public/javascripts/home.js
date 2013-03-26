@@ -1,0 +1,12 @@
+//console.log("hello!@");
+$(function(){
+	$(document).ready(function(){
+		$("div").hide();
+	})
+	$("#article").click(function(){
+		$("div").show();
+	});
+	$("#hide").click(function(){
+		$("div").hide();
+	});
+});
