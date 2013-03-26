@@ -78,11 +78,7 @@ function loginRequired (req, res, next) {
   }
 }
 
-app.get('/', loginRequired, function (req, res) {
-  req.api('account/verify_credentials').get(function (err, profile) {
-    res.send('Hi ' + profile.screen_name + '! <form action="/status" method="post"><input name="status"><button>Post Status</button></form>');
-  });
-});
+app.get('/', loginRequired,routes.index);
 
 app.post('/status', loginRequired, routes.status)
 
