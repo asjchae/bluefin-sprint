@@ -32,7 +32,7 @@ exports.get = function(req, res) {
 	// });
 
 // ATTEMPT TWO.
-	
+	var array = [];
 	request('http://www.techmeme.com/feed.xml')
 		.pipe(new feedparser())
 		
@@ -45,12 +45,13 @@ exports.get = function(req, res) {
 		})
 
 		.on('article', function(article) {
-			console.log('Got article: %s', article.title || article.description);
-			res.send(article.summary);
+			array.push(article);
+			// console.log('Got article: %s', article.title || article.description);
+			// res.send(article.summary);
 		})
 
 		.on('end', function() {
-			console.log('End');
+			res.render('feed', {title: "Feed", articleList: array});
 		});
 
 };
