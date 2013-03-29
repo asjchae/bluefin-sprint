@@ -43,7 +43,7 @@ var twitter = rem.connect('twitter.com').configure({
 
   console.log(process.env.TWITTER_KEY);
   console.log(process.env.TWITTER_SECRET);
-  
+
 var oauth = rem.oauth(twitter, 'http://' + app.get('host') + '/oauth/callback');
 
 app.get('/login/', oauth.login());
@@ -82,7 +82,5 @@ function loginRequired (req, res, next) {
 }
 
 app.get('/', loginRequired,routes.index);
-
 app.post('/status', loginRequired, routes.status)
-
 app.get('/stream', loginRequired, routes.stream)
