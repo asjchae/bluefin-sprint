@@ -5,11 +5,7 @@ block content
   p #{profile.screen_name}
 
   
-    each article, i in articleList
-      h3 #{article.title}
-      | !{article.summary}
-      br
-      br
+    
 
   form(action='/status', method='post')
     input(name='status')
@@ -21,4 +17,9 @@ block content
   div(id='articletext')
    a.twitter-timeline(href='https://twitter.com/search?q=%23techmeme', data-widget-id='316635103180759042') Tweets about "#techmeme"    
    p Surprise :) 
+   each article, i in articleList
+      h3 #{article.title}
+      | !{article.summary}
+      br
+      br
    button(id='hide') Hide
