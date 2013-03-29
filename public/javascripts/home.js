@@ -1,7 +1,8 @@
 $(function(){
 	$(document).ready(function(){
 		$("div").hide();
-		$(".twitter-timeline").hide();
+		//$(".twitter-timeline").hide();
+		$('#tweets').hide();
 	});
 
 /*	$("#showtweets").click(function(){
@@ -32,6 +33,7 @@ $(function(){
       		fjs.parentNode.insertBefore(js,fjs);
       	}
       }(document,"script","twitter-wjs"));
+
 
 
 });

@@ -2,9 +2,8 @@ extends layout
 
 block content
   h1= title
-  a.twitter-timeline(href='https://twitter.com/search?q=%23techmeme', data-widget-id='317498031433973764') Tweets
-  p #{profile.screen_name}
-
+  div(id='tweets')
+   a.twitter-timeline(href='https://twitter.com/search?q=%23techmeme', data-widget-id='317498031433973764') Tweets
 
   form(action='/status', method='post')
     input(name='status')
