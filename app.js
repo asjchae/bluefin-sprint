@@ -38,6 +38,8 @@ app.configure('production', function () {
 var twitter = rem.connect('twitter.com').configure({
   key: process.env.TWITTER_KEY,
   secret: process.env.TWITTER_SECRET
+  console.log(process.env.TWITTER_KEY);
+  console.log(process.env.TWITTER_SECRET);
 });
 
 
