@@ -41,7 +41,7 @@ var twitter = rem.connect('twitter.com').configure({
 });
 
 
-var oauth = rem.oauth(twitter, 'http://techwing.herokuapp.com'); //app.get('host') + '/oauth/callback'
+var oauth = rem.oauth(twitter, 'http://' + app.get('host') + '/oauth/callback');
 
 app.get('/login/', oauth.login());
 
