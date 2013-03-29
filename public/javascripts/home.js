@@ -8,16 +8,15 @@ $(function(){
 	$("#hidetweets").click(function(){
 		$("#tweets").hide();
 	});*/
-	$(".article").click(function(){
-		var x = ($(".article").attr("value"));
+	$(document).on("click", ".article", function() {
+		var x = ($(this).attr("value"));
 		var y = '#'+x;
-		console.log(y);
 		$(y).show();
 	});
-	$(".hide").click(function(){
-		var x = ($(".article").attr("value"));
+
+	$(document).on("click", ".hide", function() {
+		var x = ($(this).attr("value"));
 		var y = '#'+x;
-		console.log(y);
 		$(y).hide();
 	});
 	/*$function(d,s,id){

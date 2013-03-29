@@ -15,13 +15,13 @@ block content
 
   each article, i in articleList
     p #{i}
-    button(class='article', meep = i) Article
+    button(class='article', value = i) Article
     div(id = i)
       h3 #{article.title}
       | !{article.summary}
       br
       br
-    button(class = 'hide', meep = i ) Hide
+    button(class = 'hide', value = i ) Hide
     br
 
 //  button(id='article') Article
