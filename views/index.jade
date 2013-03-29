@@ -2,6 +2,7 @@ extends layout
 
 block content
   h1= title
+  a.twitter-timeline(href='https://twitter.com/search?q=%23techmeme', data-widget-id='317498031433973764') Tweets
   p #{profile.screen_name}
 
 
@@ -9,18 +10,16 @@ block content
     input(name='status')
     button Post Status
 
-    
 
   each article, i in articleList
     p #{i}
-    button(class='article', value = i) Article
+    button(class='article btn btn-warning btn-small', value = i) Article
     div(id = i)
       h3 #{article.title}
       | !{article.summary}
       br
       br
-      a.twitter-timeline(href='https://twitter.com/search?q=%23techmeme', data-widget-id='316635103180759042') Tweets
-    button(class = 'hide', value = i ) Hide
+    button(class='hidearticle', value = i ) Hide
     br
 
 //  button(id='article') Article
