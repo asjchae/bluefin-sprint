@@ -1,6 +1,7 @@
 $(function(){
 	$(document).ready(function(){
 		$("div").hide();
+		$("#articles").show();
 		//$(".twitter-timeline").hide();
 		$('#tweets').hide();
 	});

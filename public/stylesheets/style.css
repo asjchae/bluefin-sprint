@@ -10,3 +10,16 @@ a {
 div{
 	float: left;
 }
+
+#tweets{
+	display: inline-block;
+	width: 45%;
+	float: right;
+}
+
+#articles{
+	display: inline-block;
+	width: 45%;
+	float: left;
+}
+

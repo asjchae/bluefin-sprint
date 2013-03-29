@@ -9,14 +9,14 @@ block content
     input(name='status')
     button Post Status
 
+  div(id='articles')
+    each article, i in articleList
+      h4(class='well') #{article.title}
+        br
+        div(id = i)
+          h5 !{article.summary}
+        br
+        button(class='article btn btn-warning btn-small', value = i) Article
+        button(class='hidearticle btn btn-primary btn-small', value = i ) Hide
 
-  each article, i in articleList
-    p #{i}
-    button(class='article btn btn-warning btn-small', value = i) Article
-    div(id = i)
-      h3 #{article.title}
-      | !{article.summary}
-      br
-      br
-    button(class='hidearticle', value = i ) Hide
-    br
+
