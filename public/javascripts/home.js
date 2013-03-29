@@ -3,12 +3,14 @@ $(function(){
 		$("div").hide();
 		$(".twitter-timeline").hide();
 	});
+
 /*	$("#showtweets").click(function(){
 		$("#tweets").show();
 	});
 	$("#hidetweets").click(function(){
 		$("#tweets").hide();
 	});*/
+
 	$(document).on("click", ".article", function() {
 		$(".twitter-timeline").show();
 		var x = ($(this).attr("value"));

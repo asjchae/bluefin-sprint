@@ -21,28 +21,3 @@ block content
       br
     button(class='hidearticle', value = i ) Hide
     br
-
-//  button(id='article') Article
-  div(id='articletext')
-   a.twitter-timeline(href='https://twitter.com/search?q=%23techmeme', data-widget-id='316635103180759042') Tweets about "#techmeme"    
-   p Surprise :) 
-   each article, i in articleList
-      h3 #{article.title}
-      | !{article.summary}
-      br
-      br
-   button(id='hide') Hide
-
-  button(type='submit', class="btn btn-warning btn-small") Article
-  .span4
-     div(id='articletext')
-      a.twitter-timeline(href='https://twitter.com/search?q=%23techmeme', data-widget-id='316635103180759042') Tweets about "#techmeme"    
-      p Surprise :)
-  .span4
-     div(id='tweets')
-      each article, i in articleList
-         h3 #{article.title}
-         | !{article.summary}
-         br
-         br
-      button(id='hide') Hide
