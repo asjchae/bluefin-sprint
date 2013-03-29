@@ -3,6 +3,7 @@ extends layout
 
 block content
 
+  div
     each article, i in articleList
       h3 #{article.title}
       | !{article.summary}

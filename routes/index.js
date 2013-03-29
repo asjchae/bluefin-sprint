@@ -1,11 +1,11 @@
+var feedparser = require('feedparser')
+  , fs = require('fs')
+  , request = require('request')
+  , stream = require('stream');
 
 /*
  * GET home page.
  */
-
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
-};
 
 exports.stream=function(req,res){
     req.api.stream('statuses/filter').post({
@@ -33,13 +33,28 @@ exports.status=function(req,res){
 exports.index=function(req,res){
    req.api('account/verify_credentials').get(function (err, profile) {
    //res.send('Hi ' + profile.screen_name + '! <form action="/status" method="post"><input name="status"><button>Post Status</button></form>');
-   res.render('index',{title:'Flock',profile:profile});
+
+  var array = [];
+  request('http://www.techmeme.com/feed.xml')
+    .pipe(new feedparser())
+    
+    .on('error', function (error) {
+      console.error(error);
     })
+
+    .on('meta', function (meta) {
+      console.log('=================', meta.title);
+    })
+
+    .on('article', function(article) {
+      array.push(article);
+      // console.log('Got article: %s', article.title || article.description);
+      // res.send(article.summary);
+    })
+
+    .on('end', function() {
+      res.render('index', { title:"TechWing", articleList:array, profile: profile});
+    });
+
+    });
 }
-
-
-
-
-
-
-

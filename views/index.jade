@@ -4,6 +4,13 @@ block content
   h1= title
   p #{profile.screen_name}
 
+  div
+    each article, i in articleList
+      h3 #{article.title}
+      | !{article.summary}
+      br
+      br
+
   form(action='/status', method='post')
     input(name='status')
     button Post Status
