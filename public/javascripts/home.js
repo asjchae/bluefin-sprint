@@ -13,14 +13,14 @@ $(function(){
 	});*/
 
 	$(document).on("click", ".article", function() {
-		$(".twitter-timeline").show();
+		$('#tweets').show();
 		var x = ($(this).attr("value"));
 		var y = '#'+x;
 		$(y).show();
 	});
 
 	$(document).on("click", ".hidearticle", function() {
-		$(".twitter-timeline").hide();
+		$('#tweets').hide();
 		var x = ($(this).attr("value"));
 		var y = '#'+x;
 		$(y).hide();
