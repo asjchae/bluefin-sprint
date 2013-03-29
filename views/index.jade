@@ -12,8 +12,19 @@ block content
     button Post Status
 
     
-  
-  button(id='article') Article
+
+  each article, i in articleList
+    p #{i}
+    button(class='article', meep = i) Article
+    div(id = i)
+      h3 #{article.title}
+      | !{article.summary}
+      br
+      br
+    button(class = 'hide', meep = i ) Hide
+    br
+
+//  button(id='article') Article
   div(id='articletext')
    a.twitter-timeline(href='https://twitter.com/search?q=%23techmeme', data-widget-id='316635103180759042') Tweets about "#techmeme"    
    p Surprise :) 

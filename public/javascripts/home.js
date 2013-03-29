@@ -8,11 +8,17 @@ $(function(){
 	$("#hidetweets").click(function(){
 		$("#tweets").hide();
 	});*/
-	$("#article").click(function(){
-		$("#articletext").show();
+	$(".article").click(function(){
+		var x = ($(".article").attr("value"));
+		var y = '#'+x;
+		console.log(y);
+		$(y).show();
 	});
-	$("#hide").click(function(){
-		$("#articletext").hide();
+	$(".hide").click(function(){
+		var x = ($(".article").attr("value"));
+		var y = '#'+x;
+		console.log(y);
+		$(y).hide();
 	});
 	/*$function(d,s,id){
 		var js,fjs=d.getElementsByTagName(s)[0];
